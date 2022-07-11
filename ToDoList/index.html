@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="shortcut icon" href="favicon3.png" type="image/x-icon">
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            background-color: #93daf9;
+            
+        }
+        .container{
+            text-align: center;
+            display: inline-block;
+            padding-top: 40px;
+        }
+        h1{
+            font-size: 40px;
+            font-family: system-ui;
+
+        }
+
+        input{
+            font-size: 20px;
+            padding: 4px;
+        }
+        button{
+            font-size: 24px;
+            position: relative;
+            top: 1px;
+            right: 5px;
+         }
+
+         #box{
+            font-size: 22px;
+            padding-top: 31px;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+         }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>To Do List</h1>
+        <input type="text" id="input">
+        <button id="btn">add</button>
+        <div id="box"></div>
+    </div>
+
+    <script>
+        let input_call = document.getElementById("input");
+        let btn_call = document.getElementById("btn");
+        let box_call = document.getElementById("box");
+
+
+        btn_call.addEventListener("click", function(){
+            let para = document.createElement("p");
+            para.style.cursor = "pointer";
+
+            para.innerHTML  = input_call.value;
+
+            box_call.appendChild(para);
+
+            input_call.value = "";
+
+            para.addEventListener("click", function(){
+                para.style.textDecoration = "line-through";
+            });
+            
+
+            para.addEventListener("dblclick", function(){
+                box_call.remove(para);
+            });
+        });
+    </script>
+</body>
+</html>
